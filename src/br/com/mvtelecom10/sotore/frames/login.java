@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.mvtelecom10.sotre.frames;
+package br.com.mvtelecom10.sotore.frames;
 
 /**
  *
@@ -113,6 +113,8 @@ public class login extends javax.swing.JFrame {
 
     private void btn_login_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_login_loginActionPerformed
         // TODO add your handling code here:
+        MainScreen mainScreen = new MainScreen();
+        mainScreen.setVisible(true);
     }//GEN-LAST:event_btn_login_loginActionPerformed
 
     /**
