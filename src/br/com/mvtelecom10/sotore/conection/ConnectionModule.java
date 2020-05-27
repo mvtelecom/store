@@ -29,7 +29,6 @@ public class ConnectionModule {
             c = DriverManager.getConnection(url, user, password);
             return c;
         } catch (Exception e) {
-            System.out.println(c);
             return null;
         }
     }

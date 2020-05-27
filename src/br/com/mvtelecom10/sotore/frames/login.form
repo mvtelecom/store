@@ -103,8 +103,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_login_user">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jacare"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_login_userActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txt_login_password">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="123456"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btn_login_login">
       <Properties>

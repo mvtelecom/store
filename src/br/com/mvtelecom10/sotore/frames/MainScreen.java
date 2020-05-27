@@ -5,6 +5,10 @@
  */
 package br.com.mvtelecom10.sotore.frames;
 
+import java.text.DateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mv
@@ -31,6 +35,8 @@ public class MainScreen extends javax.swing.JFrame {
         desktop_main_screen = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        lbl_mainscreen_user = new javax.swing.JLabel();
+        lbl_mainscreen_date = new javax.swing.JLabel();
         menu_main_screen = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menu_item_new_user = new javax.swing.JMenuItem();
@@ -39,20 +45,38 @@ public class MainScreen extends javax.swing.JFrame {
         menu_item_new_sale = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        menu_item_new_about = new javax.swing.JMenuItem();
+        menu_item_new_options = new javax.swing.JMenu();
+        menu_item_new_logout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Titulo da Tela Principal");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mvtelecom10/sotore/icons/128.png"))); // NOI18N
 
         jLabel2.setText("jLabel2");
 
+        lbl_mainscreen_user.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        lbl_mainscreen_user.setText("Usuário");
+
+        lbl_mainscreen_date.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        lbl_mainscreen_date.setText("Data");
+        lbl_mainscreen_date.setToolTipText("");
+
         jMenu1.setText("Cadastro");
 
         menu_item_new_user.setText("Usuário");
+        menu_item_new_user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_new_userActionPerformed(evt);
+            }
+        });
         jMenu1.add(menu_item_new_user);
 
         menu_item_new_provider.setText("Fornecedor");
@@ -81,13 +105,27 @@ public class MainScreen extends javax.swing.JFrame {
 
         jMenu3.setText("Ajuda");
 
-        jMenuItem5.setText("Sobre");
-        jMenu3.add(jMenuItem5);
+        menu_item_new_about.setText("Sobre");
+        jMenu3.add(menu_item_new_about);
 
         menu_main_screen.add(jMenu3);
 
-        jMenu4.setText("Sair");
-        menu_main_screen.add(jMenu4);
+        menu_item_new_options.setText("Opções");
+        menu_item_new_options.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_new_optionsActionPerformed(evt);
+            }
+        });
+
+        menu_item_new_logout.setText("Sair");
+        menu_item_new_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_new_logoutActionPerformed(evt);
+            }
+        });
+        menu_item_new_options.add(menu_item_new_logout);
+
+        menu_main_screen.add(menu_item_new_options);
 
         setJMenuBar(menu_main_screen);
 
@@ -98,11 +136,13 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(desktop_main_screen, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(lbl_mainscreen_user)
+                    .addComponent(lbl_mainscreen_date))
+                .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -114,18 +154,22 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(jLabel1)
-                .addGap(82, 82, 82)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_mainscreen_user)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_mainscreen_date)
+                .addGap(18, 18, 18)
                 .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(358, Short.MAX_VALUE))
+                .addContainerGap(438, Short.MAX_VALUE))
             .addComponent(desktop_main_screen)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 345, Short.MAX_VALUE)
                     .addComponent(jLabel2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 346, Short.MAX_VALUE)))
         );
 
-        setSize(new java.awt.Dimension(938, 675));
+        setSize(new java.awt.Dimension(938, 771));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -136,6 +180,31 @@ public class MainScreen extends javax.swing.JFrame {
     private void menu_item_new_providerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_new_providerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menu_item_new_providerActionPerformed
+
+    private void menu_item_new_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_new_userActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_item_new_userActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+        lbl_mainscreen_date.setText(dateFormat.format(date));
+    }//GEN-LAST:event_formWindowActivated
+
+    private void menu_item_new_optionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_new_optionsActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_menu_item_new_optionsActionPerformed
+
+    private void menu_item_new_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_new_logoutActionPerformed
+        // TODO add your handling code here:
+        int logout = JOptionPane.showConfirmDialog(null, "Deseja sair?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if(logout == JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_menu_item_new_logoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,8 +249,11 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JLabel lbl_mainscreen_date;
+    private javax.swing.JLabel lbl_mainscreen_user;
+    private javax.swing.JMenuItem menu_item_new_about;
+    private javax.swing.JMenuItem menu_item_new_logout;
+    private javax.swing.JMenu menu_item_new_options;
     private javax.swing.JMenuItem menu_item_new_product;
     private javax.swing.JMenuItem menu_item_new_provider;
     private javax.swing.JMenuItem menu_item_new_sale;

@@ -7,6 +7,7 @@ package br.com.mvtelecom10.sotore.frames;
 
 import java.sql.*;
 import br.com.mvtelecom10.sotore.conection.ConnectionModule;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +18,28 @@ public class login extends javax.swing.JFrame {
     Connection c = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    
+    public void log_into(){
+        String sql = "select * from tbusers where login = ? and password = ?";
+        try {
+            ps = c.prepareStatement(sql);
+            ps.setString(1,txt_login_user.getText());
+            ps.setString(2,txt_login_password.getText());
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                MainScreen mainScreen = new MainScreen();
+                mainScreen.setVisible(true);
+                this.dispose();
+                c.close();
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
 
     /**
      * Creates new form login
@@ -24,7 +47,6 @@ public class login extends javax.swing.JFrame {
     public login() {
         initComponents();
         c = ConnectionModule.connection();
-        System.out.println(c);
     }
 
     /**
@@ -57,6 +79,15 @@ public class login extends javax.swing.JFrame {
         jLabel2.setText("Usuário");
 
         jLabel3.setText("Senha");
+
+        txt_login_user.setText("jacare");
+        txt_login_user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_login_userActionPerformed(evt);
+            }
+        });
+
+        txt_login_password.setText("123456");
 
         btn_login_login.setText("Entrar");
         btn_login_login.addActionListener(new java.awt.event.ActionListener() {
@@ -121,9 +152,12 @@ public class login extends javax.swing.JFrame {
 
     private void btn_login_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_login_loginActionPerformed
         // TODO add your handling code here:
-        MainScreen mainScreen = new MainScreen();
-        mainScreen.setVisible(true);
+        log_into();
     }//GEN-LAST:event_btn_login_loginActionPerformed
+
+    private void txt_login_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_login_userActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_login_userActionPerformed
 
     /**
      * @param args the command line arguments
