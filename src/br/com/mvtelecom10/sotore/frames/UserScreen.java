@@ -77,6 +77,55 @@ public class UserScreen extends javax.swing.JInternalFrame {
 
     }
 
+    private void edit() {
+        String sql = "UPDATE `tbusers` SET `usuario` = ?, `fone` = ?, `login` = ?, `password` = ?, `user_profile` = ? WHERE `tbusers`.`idtbusuarios` = ?;";
+        try {
+            ps = c.prepareStatement(sql);
+            ps.setString(1, txt_userscreen_name.getText());
+            ps.setString(2, txt_userscreen_fone.getText());
+            ps.setString(3, txt_userscreen_login.getText());
+            ps.setString(4, txt_userscreen_password.getText());
+            ps.setString(5, cbo_userscreen_profile.getSelectedItem().toString());
+            ps.setString(6, txt_userscreen_id.getText());
+            System.out.println(ps);
+            int edit_user = ps.executeUpdate();
+            if (edit_user > 0) {
+                JOptionPane.showMessageDialog(null, "Alterado com sucesso");
+                txt_userscreen_name.setText(null);
+                txt_userscreen_fone.setText(null);
+                txt_userscreen_login.setText(null);
+                txt_userscreen_password.setText(null);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    private void delete_user() {
+        int delete = JOptionPane.showConfirmDialog(null, "Deseja excluir?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if (delete == JOptionPane.YES_OPTION) {
+            String sql = "DELETE FROM `tbusers` WHERE `tbusers`.`idtbusuarios` = ?";
+            try {
+                ps = c.prepareStatement(sql);
+
+                ps.setString(1, txt_userscreen_id.getText());
+                int edit_user = ps.executeUpdate();
+                if (edit_user > 0) {
+                    JOptionPane.showMessageDialog(null, "Removido com sucesso");
+                    txt_userscreen_name.setText(null);
+                    txt_userscreen_fone.setText(null);
+                    txt_userscreen_login.setText(null);
+                    txt_userscreen_password.setText(null);
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -143,10 +192,20 @@ public class UserScreen extends javax.swing.JInternalFrame {
         btn_userscreen_edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mvtelecom10/sotore/icons/edit64.png"))); // NOI18N
         btn_userscreen_edit.setToolTipText("Editar");
         btn_userscreen_edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_userscreen_edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_userscreen_editActionPerformed(evt);
+            }
+        });
 
         btn_userscreen_delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mvtelecom10/sotore/icons/delet64.png"))); // NOI18N
         btn_userscreen_delete.setToolTipText("Deletar");
         btn_userscreen_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_userscreen_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_userscreen_deleteActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Id");
 
@@ -248,6 +307,16 @@ public class UserScreen extends javax.swing.JInternalFrame {
         add_user();
 
     }//GEN-LAST:event_btn_userscreen_addActionPerformed
+
+    private void btn_userscreen_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_userscreen_editActionPerformed
+        // TODO add your handling code here:
+        edit();
+    }//GEN-LAST:event_btn_userscreen_editActionPerformed
+
+    private void btn_userscreen_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_userscreen_deleteActionPerformed
+        // TODO add your handling code here:
+        delete_user();
+    }//GEN-LAST:event_btn_userscreen_deleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
