@@ -58,6 +58,8 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
+        desktop_main_screen.setPreferredSize(new java.awt.Dimension(640, 480));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mvtelecom10/sotore/icons/128.png"))); // NOI18N
 
         jLabel2.setText("jLabel2");
@@ -89,6 +91,11 @@ public class MainScreen extends javax.swing.JFrame {
 
         menu_item_new_user.setText("Usuário");
         menu_item_new_user.setEnabled(false);
+        menu_item_new_user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_new_userActionPerformed(evt);
+            }
+        });
         jMenu1.add(menu_item_new_user);
 
         menu_main_screen.add(jMenu1);
@@ -137,42 +144,49 @@ public class MainScreen extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(desktop_main_screen, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
+                .addComponent(desktop_main_screen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(lbl_mainscreen_user)
-                    .addComponent(lbl_mainscreen_date))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_mainscreen_date)
+                            .addComponent(lbl_mainscreen_user))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 374, Short.MAX_VALUE)
                     .addComponent(jLabel2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 375, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lbl_mainscreen_user)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_mainscreen_date)
-                .addGap(18, 18, 18)
+                .addGap(43, 43, 43)
                 .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(438, Short.MAX_VALUE))
-            .addComponent(desktop_main_screen)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktop_main_screen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 345, Short.MAX_VALUE)
+                    .addGap(0, 231, Short.MAX_VALUE)
                     .addComponent(jLabel2)
-                    .addGap(0, 346, Short.MAX_VALUE)))
+                    .addGap(0, 232, Short.MAX_VALUE)))
         );
 
-        setSize(new java.awt.Dimension(938, 771));
+        setSize(new java.awt.Dimension(808, 543));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -210,6 +224,13 @@ public class MainScreen extends javax.swing.JFrame {
         About about =  new About();
         about.setVisible(true);
     }//GEN-LAST:event_menu_item_new_aboutActionPerformed
+
+    private void menu_item_new_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_new_userActionPerformed
+        // TODO add your handling code here:
+        UserScreen userScreen =  new UserScreen();
+        userScreen.setVisible(true);
+        desktop_main_screen.add(userScreen);
+    }//GEN-LAST:event_menu_item_new_userActionPerformed
 
     /**
      * @param args the command line arguments
