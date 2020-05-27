@@ -18,22 +18,28 @@ public class login extends javax.swing.JFrame {
     Connection c = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
-    
-    public void log_into(){
+
+    public void log_into() {
         String sql = "select * from tbusers where login = ? and password = ?";
         try {
             ps = c.prepareStatement(sql);
-            ps.setString(1,txt_login_user.getText());
-            ps.setString(2,txt_login_password.getText());
-            
+            ps.setString(1, txt_login_user.getText());
+            ps.setString(2, txt_login_password.getText());
+
             rs = ps.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
+                String profile = rs.getString(6);
                 MainScreen mainScreen = new MainScreen();
                 mainScreen.setVisible(true);
+                if (profile.equals("adm")) {
+                    MainScreen.menu_item_new_user.setEnabled(true);
+                    MainScreen.menu_item_new_report.setEnabled(true);
+                }
+                MainScreen.lbl_mainscreen_user.setText(rs.getString(4));
                 this.dispose();
                 c.close();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos");
             }
         } catch (Exception e) {

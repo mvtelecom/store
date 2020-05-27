@@ -39,11 +39,11 @@ public class MainScreen extends javax.swing.JFrame {
         lbl_mainscreen_date = new javax.swing.JLabel();
         menu_main_screen = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        menu_item_new_client = new javax.swing.JMenuItem();
+        menu_item_new_os = new javax.swing.JMenuItem();
         menu_item_new_user = new javax.swing.JMenuItem();
-        menu_item_new_provider = new javax.swing.JMenuItem();
-        menu_item_new_product = new javax.swing.JMenuItem();
-        menu_item_new_sale = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menu_item_new_report = new javax.swing.JMenu();
+        menu_item_new_service = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menu_item_new_about = new javax.swing.JMenuItem();
         menu_item_new_options = new javax.swing.JMenu();
@@ -71,41 +71,44 @@ public class MainScreen extends javax.swing.JFrame {
 
         jMenu1.setText("Cadastro");
 
+        menu_item_new_client.setText("Cliente");
+        menu_item_new_client.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_new_clientActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_item_new_client);
+
+        menu_item_new_os.setText("OS");
+        menu_item_new_os.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_new_osActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_item_new_os);
+
         menu_item_new_user.setText("Usuário");
-        menu_item_new_user.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_item_new_userActionPerformed(evt);
-            }
-        });
+        menu_item_new_user.setEnabled(false);
         jMenu1.add(menu_item_new_user);
-
-        menu_item_new_provider.setText("Fornecedor");
-        menu_item_new_provider.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_item_new_providerActionPerformed(evt);
-            }
-        });
-        jMenu1.add(menu_item_new_provider);
-
-        menu_item_new_product.setText("Produto");
-        jMenu1.add(menu_item_new_product);
-
-        menu_item_new_sale.setText("Venda");
-        menu_item_new_sale.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_item_new_saleActionPerformed(evt);
-            }
-        });
-        jMenu1.add(menu_item_new_sale);
 
         menu_main_screen.add(jMenu1);
 
-        jMenu2.setText("Relatório");
-        menu_main_screen.add(jMenu2);
+        menu_item_new_report.setText("Relatório");
+        menu_item_new_report.setEnabled(false);
+
+        menu_item_new_service.setText("Serviços");
+        menu_item_new_report.add(menu_item_new_service);
+
+        menu_main_screen.add(menu_item_new_report);
 
         jMenu3.setText("Ajuda");
 
         menu_item_new_about.setText("Sobre");
+        menu_item_new_about.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_new_aboutActionPerformed(evt);
+            }
+        });
         jMenu3.add(menu_item_new_about);
 
         menu_main_screen.add(jMenu3);
@@ -134,7 +137,7 @@ public class MainScreen extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(desktop_main_screen, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +145,7 @@ public class MainScreen extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(lbl_mainscreen_user)
                     .addComponent(lbl_mainscreen_date))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -173,17 +176,13 @@ public class MainScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menu_item_new_saleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_new_saleActionPerformed
+    private void menu_item_new_osActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_new_osActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menu_item_new_saleActionPerformed
+    }//GEN-LAST:event_menu_item_new_osActionPerformed
 
-    private void menu_item_new_providerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_new_providerActionPerformed
+    private void menu_item_new_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_new_clientActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menu_item_new_providerActionPerformed
-
-    private void menu_item_new_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_new_userActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menu_item_new_userActionPerformed
+    }//GEN-LAST:event_menu_item_new_clientActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
@@ -205,6 +204,12 @@ public class MainScreen extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_menu_item_new_logoutActionPerformed
+
+    private void menu_item_new_aboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_new_aboutActionPerformed
+        // TODO add your handling code here:
+        About about =  new About();
+        about.setVisible(true);
+    }//GEN-LAST:event_menu_item_new_aboutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,17 +252,17 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JLabel lbl_mainscreen_date;
-    private javax.swing.JLabel lbl_mainscreen_user;
+    public static javax.swing.JLabel lbl_mainscreen_user;
     private javax.swing.JMenuItem menu_item_new_about;
+    private javax.swing.JMenuItem menu_item_new_client;
     private javax.swing.JMenuItem menu_item_new_logout;
     private javax.swing.JMenu menu_item_new_options;
-    private javax.swing.JMenuItem menu_item_new_product;
-    private javax.swing.JMenuItem menu_item_new_provider;
-    private javax.swing.JMenuItem menu_item_new_sale;
-    private javax.swing.JMenuItem menu_item_new_user;
+    private javax.swing.JMenuItem menu_item_new_os;
+    public static javax.swing.JMenu menu_item_new_report;
+    private javax.swing.JMenuItem menu_item_new_service;
+    public static javax.swing.JMenuItem menu_item_new_user;
     private javax.swing.JMenuBar menu_main_screen;
     // End of variables declaration//GEN-END:variables
 }
